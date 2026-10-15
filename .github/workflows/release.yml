@@ -5,24 +5,33 @@ on:
     paths:
       - '.github/workflows/release.yml'
       - 'scripts/assemble-release.py'
+      - 'scripts/patch-release.py'
+      - 'extension/CrystalLyrics/content.js'
+      - 'extension/CrystalLyrics/manifest.json'
+      - 'extension/CrystalLyrics/README.md'
       - 'docs/downloads/part-*.b64'
   workflow_dispatch:
 permissions:
   contents: write
+concurrency:
+  group: crystallyrics-release
+  cancel-in-progress: false
 jobs:
   release:
     runs-on: ubuntu-latest
     steps:
       - name: Check out source
         uses: actions/checkout@v4
-      - name: Assemble and verify the extension ZIP
-        run: python3 scripts/assemble-release.py --output dist/CrystalLyrics-v1.4.zip
-      - name: Publish version 1.4.0
+      - name: Reconstruct and verify original package
+        run: python3 scripts/assemble-release.py --output dist/CrystalLyrics-v1.4-base.zip
+      - name: Apply fullscreen launcher fix and verify version 1.4.1
+        run: python3 scripts/patch-release.py --base dist/CrystalLyrics-v1.4-base.zip --output dist/CrystalLyrics-v1.4.1.zip
+      - name: Publish version 1.4.1
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          if gh release view v1.4.0 >/dev/null 2>&1; then
-            gh release upload v1.4.0 dist/CrystalLyrics-v1.4.zip --clobber
+          if gh release view v1.4.1 >/dev/null 2>&1; then
+            gh release upload v1.4.1 dist/CrystalLyrics-v1.4.1.zip --clobber
           else
-            gh release create v1.4.0 dist/CrystalLyrics-v1.4.zip --title 'CrystalLyrics v1.4.0' --notes 'The official CrystalLyrics desktop Chrome and Edge extension. Download the ZIP, extract it, and use Load unpacked from your browser extension settings. Visit the product website for a visual preview and feature details.'
+            gh release create v1.4.1 dist/CrystalLyrics-v1.4.1.zip --title 'CrystalLyrics v1.4.1' --notes 'Fullscreen hotfix: the top-right ♪ Lyrics launcher now hides automatically when YouTube is fullscreen, while the synced lyric overlay and YouTube captions stay visible. The launcher returns after exiting fullscreen. To update an existing unpacked extension, replace the files in your existing CrystalLyrics folder, reload the extension, then refresh YouTube.'
           fi
