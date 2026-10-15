@@ -73,7 +73,7 @@ For permissions, troubleshooting, local timing limitations, and technical detail
 
 - Browser extension source: [`extension/CrystalLyrics`](extension/CrystalLyrics)
 - Website: [`docs/`](docs/)
-- Website deployment: GitHub Pages from `main` / `docs` (requires Pages to be enabled in repository Settings)
+- Website deployment: automated by [Deploy CrystalLyrics website](.github/workflows/pages.yml). **One-time activation required:** open [Settings → Pages](https://github.com/y2kbeatzz-dot/Crystal-Lyrics/settings/pages), select **GitHub Actions** as the build source, save, then [re-run the website deployment](https://github.com/y2kbeatzz-dot/Crystal-Lyrics/actions/workflows/pages.yml). The public URL is `https://y2kbeatzz-dot.github.io/Crystal-Lyrics/` after a successful deployment.
 - Rebuild the verified ZIP from the static release files: `python scripts/assemble-release.py`.
 - The large optional offline audio runtime is bundled inside the downloadable ZIP rather than stored as an individual `.wasm` source file in Git. For a standalone unpacked extension folder, use the release ZIP.
 - License: MIT for the original project code; third-party licenses and bundled font notices are retained in their respective directories.
