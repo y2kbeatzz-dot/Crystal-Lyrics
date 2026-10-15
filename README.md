@@ -1,39 +1,83 @@
-# ✦ CrystalLyrics
+<div align="center">
 
-**Beautiful synchronized lyrics for YouTube and YouTube Music.**
+<img src="docs/assets/launch-banner.svg" width="100%" alt="CrystalLyrics — Feel every word. A modern pink and purple lyric extension for YouTube and YouTube Music." />
 
-CrystalLyrics 1.4 is a free Chrome / Edge extension with word-level highlighting, optional color matching from cover art or video, movable glass lyric windows, independently selectable lyric effects, fonts, and optional local audio timing.
+# ✦ CRYSTALLYRICS
 
-## Get the extension
+### Your music. In every word.
 
-Download the packaged [`CrystalLyrics-v1.4.zip`](docs/downloads/CrystalLyrics-v1.4.zip) (or obtain the same v1.4 package from a release), then:
+**Make your favorite songs look as good as they feel.** A free, customizable lyrics experience for YouTube and YouTube Music.
 
-1. **Extract** the ZIP into a permanent folder.
-2. Open `chrome://extensions` (Chrome) or `edge://extensions` (Edge).
-3. Turn on **Developer mode** and choose **Load unpacked**.
-4. Select the extracted **CrystalLyrics** folder with `manifest.json` inside.
-5. Refresh YouTube or YouTube Music and play a song.
+[**✦ EXPLORE THE WEBSITE**](https://y2kbeatzz-dot.github.io/Crystal-Lyrics/) &nbsp;&nbsp;•&nbsp;&nbsp; [**↓ GET CRYSTALLYRICS**](https://y2kbeatzz-dot.github.io/Crystal-Lyrics/#download) &nbsp;&nbsp;•&nbsp;&nbsp; [**✳ TRY THE LYRICS STUDIO**](https://y2kbeatzz-dot.github.io/Crystal-Lyrics/#playground)
 
-Desktop Chrome/Edge 116+ required. This is a manual-install extension, not a Chrome Web Store listing. The full source as provided in the release ZIP is also under [`extension/CrystalLyrics/`](extension/CrystalLyrics/). See [the extension's original README](extension/CrystalLyrics/README.md) for feature specifics, troubleshooting, permissions, and attribution.
+![Version](https://img.shields.io/badge/version-1.4.0-ed79c7?style=flat-square) ![Chrome](https://img.shields.io/badge/Chrome-116%2B-11111b?style=flat-square) ![Edge](https://img.shields.io/badge/Edge-desktop-11111b?style=flat-square) ![License](https://img.shields.io/badge/license-MIT-a98bef?style=flat-square) ![Price](https://img.shields.io/badge/free-forever-fc96d6?style=flat-square)
 
-## Website
+</div>
 
-The public landing page lives in [`docs/`](docs/). It has a responsive dark-glass design, atmospheric album artwork (original abstract CSS graphics), a **silent interactive lyrics demo**, palette picker, live glow/word-lift toggles, installation guide and FAQ. The sample song and demo lyrics are fictional, so no copyrighted recording or lyrics are embedded.
+---
 
-**Preview locally:** Open `docs/index.html` in a browser. The demo works without a server. For downloading the extension ZIP from the site, serve the docs directory with an HTTP server (e.g. `python -m http.server 8000 --directory docs`) or host with GitHub Pages.
+## Music is more than sound.
 
-**Publish with GitHub Pages:** Repository **Settings → Pages → Build and deployment → Deploy from a branch → `main` → `/docs` → Save**. The expected address will be `https://y2kbeatzz-dot.github.io/Crystal-Lyrics/` once GitHub has deployed it. GitHub Pages must be enabled in settings; committing these files alone does not guarantee the site is live.
+**CrystalLyrics turns the words into the moment.** Watch lyrics come alive directly on the video, pick a look that feels like *you*, and let the visuals move with your music. No second screen. No account.
 
-## Important notes
+| ✦ Feel every word | ◈ Find your color | ▤ Make it yours |
+| :--- | :--- | :--- |
+| Word-by-word karaoke, glow, lift and fade effects. | Album artwork and optional video-inspired palettes. | Transparent, draggable, resizable lyric overlays and custom fonts. |
 
-- This is not an official Google/YouTube extension.
-- Word estimates from line timestamps are *estimates*, not guaranteed precise synchronization. Real word timings take priority.
-- Optional audio timing captures the tab only on explicit request, is processed locally, and may download ~80 MB of model data at first use.
-- Lyric lookups use LRCLIB and optional cover search uses Apple's public catalog service; see original README for data handling details.
-- The website demo is a visual simulation, not the extension itself or live YouTube playback.
-- The website respects `prefers-reduced-motion`; the extension has its own Reduce motion option, on by default.
-- Bundled font licenses are in [`docs/assets/fonts/`](docs/assets/fonts/) and [`extension/CrystalLyrics/fonts/`](extension/CrystalLyrics/fonts/).
+### Make it look how it feels.
 
-## License
+- **Word-first visuals.** Karaoke fill, emphasis, underline, word glow, word lift, line fade and soft focus are independently adjustable.
+- **Art-inspired colors.** Match your lyrics to cover art, take cues from supported video frames, or choose a manual palette.
+- **Your screen, your style.** Move and resize glass lyric windows; tune transparency and typography.
+- **Realistic sync options.** Supplied word timing takes priority. When only line timing is available, estimates are clearly labeled. Optional local audio timing is available.
+- **Built for comfort.** Motion effects can be individually switched off; Reduce motion is on by default.
 
-Extension code: MIT as shipped in [`LICENSE.txt`](extension/CrystalLyrics/LICENSE.txt). Bundled third-party notices accompany the files in `extension/CrystalLyrics/vendor/` and fonts directories. Website code: MIT under the same project terms.
+<div align="center">
+
+### ✧ Your song deserves a little magic.
+
+**[VISIT THE CRYSTALLYRICS WEBSITE ↗](https://y2kbeatzz-dot.github.io/Crystal-Lyrics/)**
+
+*The website includes an interactive visual lyrics studio. Sample lyrics and visuals are a silent concept demo, not YouTube playback.*
+
+</div>
+
+---
+
+<details>
+<summary><b>Getting started / manual installation</b></summary>
+
+The current **CrystalLyrics v1.4.0** release is a desktop Chrome / Edge extension. It's not yet distributed through the Chrome Web Store.
+
+1. Download the ZIP from the [website](https://y2kbeatzz-dot.github.io/Crystal-Lyrics/#download), then extract it to a folder you will keep.
+2. Open `chrome://extensions` (or `edge://extensions`).
+3. Enable **Developer mode** and choose **Load unpacked**.
+4. Select the extracted **CrystalLyrics** folder containing `manifest.json`.
+5. Reload YouTube or YouTube Music and enjoy.
+
+For permissions, troubleshooting, local timing limitations, and technical details, see the [full extension documentation](extension/CrystalLyrics/README.md).
+</details>
+
+<details>
+<summary><b>Privacy, limitations and compatibility</b></summary>
+
+- Works on **desktop YouTube and YouTube Music**. Spotify/Apple Music streaming is not currently supported.
+- Lyric lookup can send track metadata to LRCLIB; artwork lookup may contact Apple's public catalog service.
+- Tab audio analysis requires explicit permission, runs locally, and may first download a model. It is optional.
+- Perfect word timing isn't guaranteed for all tracks. Line timing can be estimated.
+- CrystalLyrics isn't affiliated with Google or YouTube.
+</details>
+
+<details>
+<summary><b>For developers</b></summary>
+
+- Browser extension source: [`extension/CrystalLyrics`](extension/CrystalLyrics)
+- Website: [`docs/`](docs/)
+- Website deployment: GitHub Pages from `main` / `docs` (requires Pages to be enabled in repository Settings)
+- License: MIT for the original project code; third-party licenses and bundled font notices are retained in their respective directories.
+
+</details>
+
+---
+
+<div align="center"><sub>© 2026 CrystalLyrics • Free & open source • Made for the music you love</sub></div>

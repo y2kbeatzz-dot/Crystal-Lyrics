@@ -124,17 +124,60 @@
     heroWords[0].classList.add('active');
   }
 
-  // The portable site bundle includes the extension ZIP. For an incomplete
-  // GitHub upload, fall back to the source repository rather than a 404.
+  // Native ZIP if hosted as a complete distribution, or an equally complete
+  // ZIP reconstructed from static text chunks in limited GitHub deployments.
   const button = $('downloadBtn');
-  const downloadNote = $('downloadNote');
-  const bundledZip = 'downloads/CrystalLyrics-v1.4.zip';
-  fetch(bundledZip, { method: 'HEAD' }).then(response => {
-    if (!response.ok || !button) return;
-    button.href = bundledZip;
-    button.removeAttribute('target');
-    button.removeAttribute('rel');
-    button.setAttribute('download', 'CrystalLyrics-v1.4.zip');
-    if (downloadNote) downloadNote.textContent = 'ZIP download · Desktop Chrome / Edge 116+ · Extract before installing';
-  }).catch(() => {});
+  const feedback = $('downloadFeedback');
+  const note = $('downloadNote');
+  const zipUrl = 'downloads/CrystalLyrics-v1.4.zip';
+  const parts = ['downloads/part-01.b64', 'downloads/part-02.b64', 'downloads/part-03.b64', 'downloads/part-04.b64', 'downloads/part-05.b64', 'downloads/part-06.b64', 'downloads/part-07.b64', 'downloads/part-08.b64'];
+  const setFeedback = text => { if (feedback) feedback.textContent = text; };
+  function saveFile(blob) {
+    const url = URL.createObjectURL(blob);
+    const anchor = document.createElement('a');
+    anchor.href = url;
+    anchor.download = 'CrystalLyrics-v1.4.zip';
+    anchor.style.display = 'none';
+    document.body.appendChild(anchor);
+    anchor.click();
+    anchor.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 60000);
+  }
+  async function downloadExtension() {
+    if (!button) return;
+    button.disabled = true;
+    const label = button.innerHTML;
+    button.textContent = 'Preparing your download…';
+    try {
+      const direct = await fetch(zipUrl, {method: 'HEAD'}).catch(() => null);
+      if (direct?.ok) {
+        const response = await fetch(zipUrl);
+        if (!response.ok) throw new Error('Download file temporarily unavailable');
+        saveFile(await response.blob());
+      } else {
+        // Parts hold the complete ZIP as base64 text; no external server needed.
+        let b64 = '';
+        for (let i = 0; i < parts.length; i++) {
+          setFeedback(`Preparing the release package… ${Math.round((i + 1) / parts.length * 100)}%`);
+          const response = await fetch(parts[i]);
+          if (!response.ok) throw new Error(`Release part ${i+1} is missing`);
+          b64 += (await response.text()).trim();
+        }
+        const decoded = atob(b64);
+        const data = new Uint8Array(decoded.length);
+        for (let i = 0; i < decoded.length; i++) data[i] = decoded.charCodeAt(i);
+        if (data[0] !== 80 || data[1] !== 75) throw new Error('Package format is invalid');
+        saveFile(new Blob([data], {type: 'application/zip'}));
+      }
+      setFeedback('Your CrystalLyrics download is ready. Extract the ZIP to start.');
+    } catch (error) {
+      console.error('CrystalLyrics download:', error);
+      setFeedback('The download is temporarily unavailable. View the GitHub repository for the source.');
+    } finally {
+      button.disabled = false;
+      button.innerHTML = label;
+    }
+  }
+  button?.addEventListener('click', downloadExtension);
+  if (note) note.textContent = 'Desktop Chrome / Edge 116+ · Free and open source · v1.4.0';
 })();
