@@ -8,7 +8,7 @@
 
 **Make your favorite songs look as good as they feel.** A free, customizable lyrics experience for YouTube and YouTube Music.
 
-[**✦ EXPLORE THE WEBSITE**](https://y2kbeatzz-dot.github.io/Crystal-Lyrics/) &nbsp;&nbsp;•&nbsp;&nbsp; [**↓ GET CRYSTALLYRICS**](https://y2kbeatzz-dot.github.io/Crystal-Lyrics/#download) &nbsp;&nbsp;•&nbsp;&nbsp; [**✳ TRY THE LYRICS STUDIO**](https://y2kbeatzz-dot.github.io/Crystal-Lyrics/#playground)
+[**✦ EXPLORE THE WEBSITE**](https://y2kbeatzz-dot.github.io/Crystal-Lyrics/) &nbsp;&nbsp;•&nbsp;&nbsp; [**↓ DOWNLOAD V1.4.0**](https://github.com/y2kbeatzz-dot/Crystal-Lyrics/releases/download/v1.4.0/CrystalLyrics-v1.4.zip) &nbsp;&nbsp;•&nbsp;&nbsp; [**✳ TRY THE LYRICS STUDIO**](https://y2kbeatzz-dot.github.io/Crystal-Lyrics/#playground)
 
 ![Version](https://img.shields.io/badge/version-1.4.0-ed79c7?style=flat-square) ![Chrome](https://img.shields.io/badge/Chrome-116%2B-11111b?style=flat-square) ![Edge](https://img.shields.io/badge/Edge-desktop-11111b?style=flat-square) ![License](https://img.shields.io/badge/license-MIT-a98bef?style=flat-square) ![Price](https://img.shields.io/badge/free-forever-fc96d6?style=flat-square)
 
@@ -49,7 +49,7 @@
 
 The current **CrystalLyrics v1.4.0** release is a desktop Chrome / Edge extension. It's not yet distributed through the Chrome Web Store.
 
-1. Download the ZIP from the [website](https://y2kbeatzz-dot.github.io/Crystal-Lyrics/#download), then extract it to a folder you will keep.
+1. Download the [official CrystalLyrics ZIP](https://github.com/y2kbeatzz-dot/Crystal-Lyrics/releases/download/v1.4.0/CrystalLyrics-v1.4.zip), then extract it to a folder you will keep.
 2. Open `chrome://extensions` (or `edge://extensions`).
 3. Enable **Developer mode** and choose **Load unpacked**.
 4. Select the extracted **CrystalLyrics** folder containing `manifest.json`.
@@ -74,6 +74,8 @@ For permissions, troubleshooting, local timing limitations, and technical detail
 - Browser extension source: [`extension/CrystalLyrics`](extension/CrystalLyrics)
 - Website: [`docs/`](docs/)
 - Website deployment: GitHub Pages from `main` / `docs` (requires Pages to be enabled in repository Settings)
+- Rebuild the verified ZIP from the static release files: `python scripts/assemble-release.py`.
+- The large optional offline audio runtime is bundled inside the downloadable ZIP rather than stored as an individual `.wasm` source file in Git. For a standalone unpacked extension folder, use the release ZIP.
 - License: MIT for the original project code; third-party licenses and bundled font notices are retained in their respective directories.
 
 </details>
