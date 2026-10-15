@@ -15,6 +15,8 @@
   <link rel="icon" type="image/png" href="assets/icon128.png">
   <link rel="stylesheet" href="assets/theme.css">
   <script src="assets/site.js" defer></script>
+  <link rel="stylesheet" href="assets/spotlight.css">
+  <script src="assets/spotlight.js" defer></script>
 </head>
 <body>
   <div class="background-haze" aria-hidden="true"><div class="haze-one"></div><div class="haze-two"></div><div class="haze-three"></div></div>
@@ -49,11 +51,31 @@
         <span class="little-caption">A concept of the in-video lyrics experience. Sample text; not a live music player.</span>
       </div>
     </section>
-    <section class="kinetic-section" aria-label="CrystalLyrics animated wordmark">
-      <div class="kinetic-backdrop" aria-hidden="true"></div>
-      <div class="kinetic-brand" aria-hidden="true"><span>crystal</span><span>lyrics</span></div>
-      <div class="kinetic-foreground"><span>THE MUSIC</span><b>LOOKS DIFFERENT HERE.</b><span>✦ &nbsp; YOUR SCREEN, YOUR SOUND, YOUR STYLE &nbsp; ✦</span></div>
-      <span class="kinetic-label">SOUND IN COLOR · MADE TO FEEL</span>
+    <section class="spotlight-stage" id="spotlight" data-spotlight-stage data-color="pink" tabindex="0" aria-labelledby="spotlight-title">
+      <h2 class="sr-only" id="spotlight-title">CrystalLyrics interactive neon spotlight</h2>
+      <div class="spotlight-stage__grit" aria-hidden="true"></div>
+      <div class="spotlight-stage__aura" aria-hidden="true"></div>
+      <div class="spotlight-stage__edge" aria-hidden="true"></div>
+      <div class="spotlight-stage__top">
+        <span class="spotlight-stage__eyebrow"><strong>01 /</strong> FEEL THE LIGHT</span>
+        <span class="spotlight-stage__hint">MOVE YOUR CURSOR TO REVEAL THE COLOR<br>TOUCH OR DRAG ON MOBILE</span>
+      </div>
+      <div class="spotlight-stage__type" aria-hidden="true">
+        <span class="spotlight-stage__word spotlight-stage__word--dim">crystallyrics</span>
+      </div>
+      <div class="spotlight-stage__reveal" aria-hidden="true">
+        <span class="spotlight-stage__word">crystallyrics</span>
+      </div>
+      <span class="spotlight-stage__ring" aria-hidden="true"></span>
+      <div class="spotlight-stage__bottom">
+        <div class="spotlight-stage__tag">THE MUSIC <strong>LOOKS DIFFERENT.</strong></div>
+        <div class="spotlight-stage__switches" role="group" aria-label="Spotlight colors and motion">
+          <button type="button" data-spotlight-color="pink" aria-pressed="true">Pink</button>
+          <button type="button" data-spotlight-color="violet" aria-pressed="false">Violet</button>
+          <button type="button" data-spotlight-color="ice" aria-pressed="false">Ice</button>
+          <button type="button" data-spotlight-motion aria-pressed="true">Ⅱ Auto sweep</button>
+        </div>
+      </div>
     </section>
     <section class="marquee-block" aria-label="Highlights"><div class="marquee-track"><span>WORD BY WORD</span><span class="marquee-star">✳</span><span>COLOR MATCHING</span><span class="marquee-star">✳</span><span>SOFT GLOW</span><span class="marquee-star">✳</span><span>YOUR FONTS</span><span class="marquee-star">✳</span><span>YOUR WAY</span><span class="marquee-star">✳</span><span>WORD BY WORD</span><span class="marquee-star">✳</span><span>COLOR MATCHING</span><span class="marquee-star">✳</span><span>SOFT GLOW</span><span class="marquee-star">✳</span><span>YOUR FONTS</span><span class="marquee-star">✳</span><span>YOUR WAY</span><span class="marquee-star">✳</span></div></section>
     <section class="section wrap" id="features">
