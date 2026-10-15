@@ -288,7 +288,7 @@
     const parent = document.fullscreenElement || document.body;
     if (parent && host.parentNode !== parent) parent.append(host);
     host.hidden = !settings.enabled || !videoId;
-    panel.hidden = collapsed; launcher.hidden = !collapsed;
+    panel.hidden = collapsed; launcher.hidden = !collapsed || Boolean(document.fullscreenElement);
     const player = document.querySelector('#movie_player') || video?.parentElement;
     if (player && player !== overlayParent) { player.append(overlayHost); overlayParent = player; }
     overlayHost.hidden = !settings.enabled || !settings.overlay || !parsed.timed || !videoId || isAd() || (active < 0&&!settings.editLayout);
