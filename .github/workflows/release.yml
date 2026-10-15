@@ -1,0 +1,28 @@
+name: Publish CrystalLyrics release
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/release.yml'
+      - 'scripts/assemble-release.py'
+      - 'docs/downloads/part-*.b64'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+      - name: Assemble and verify the extension ZIP
+        run: python3 scripts/assemble-release.py --output dist/CrystalLyrics-v1.4.zip
+      - name: Publish version 1.4.0
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if gh release view v1.4.0 >/dev/null 2>&1; then
+            gh release upload v1.4.0 dist/CrystalLyrics-v1.4.zip --clobber
+          else
+            gh release create v1.4.0 dist/CrystalLyrics-v1.4.zip --title 'CrystalLyrics v1.4.0' --notes 'The official CrystalLyrics desktop Chrome and Edge extension. Download the ZIP, extract it, and use Load unpacked from your browser extension settings. Visit the product website for a visual preview and feature details.'
+          fi

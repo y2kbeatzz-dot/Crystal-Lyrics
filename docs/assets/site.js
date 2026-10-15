@@ -167,6 +167,13 @@
         const data = new Uint8Array(decoded.length);
         for (let i = 0; i < decoded.length; i++) data[i] = decoded.charCodeAt(i);
         if (data[0] !== 80 || data[1] !== 75) throw new Error('Package format is invalid');
+        if (globalThis.crypto && globalThis.crypto.subtle) {
+          const digest = await globalThis.crypto.subtle.digest('SHA-256', data);
+          const hash = Array.from(new Uint8Array(digest), v => v.toString(16).padStart(2, '0')).join('');
+          if (hash !== '70fed8ffbf053e2e08fdf6eb2febb282020e493db29dcbb256de8c97b6f7c8ed') {
+            throw new Error('The download failed verification');
+          }
+        }
         saveFile(new Blob([data], {type: 'application/zip'}));
       }
       setFeedback('Your CrystalLyrics download is ready. Extract the ZIP to start.');
