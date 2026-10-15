@@ -1,4 +1,9 @@
-# CrystalLyrics 1.4
+# CrystalLyrics 1.4.1
+
+## Fullscreen behavior (v1.4.1)
+
+When a YouTube video is fullscreen, the minimized **♪ Lyrics** launcher button is hidden automatically. The actual synced lyric overlay, YouTube captions, and video controls stay visible. Exit fullscreen to see the launcher again.
+
 
 A free Chrome / Edge desktop extension for YouTube and YouTube Music, with cover or video color matching, word effects, steady glow, custom colors, fonts, and movable transparent lyric boxes.
 
